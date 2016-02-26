@@ -3185,15 +3185,6 @@ void MPU9250::setDMPConfig2(uint8_t config) {
 }
 
 // Note: User calibration isn't implemented using only factory offsets
-float MPU9250::readGyroX() {
-    return 0.f;
-}
-float MPU9250::readGyroY() {
-    return 0.f;
-}
-float MPU9250::readGyroZ() {
-    return 0.f;
-}
 float MPU9250::readAccelX() {
     return (float)getAccelerationX() / accel_sens;
 }
