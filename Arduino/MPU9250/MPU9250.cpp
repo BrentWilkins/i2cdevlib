@@ -254,6 +254,20 @@ uint8_t MPU9250::getFullScaleGyroRange() {
  * @see MPU9250_GCONFIG_FS_SEL_LENGTH
  */
 void MPU9250::setFullScaleGyroRange(uint8_t range) {
+    switch (range) {
+        case MPU9250_GYRO_FS_250:
+            gyro_sens = MPU9250_GYRO_FS_250_FACTOR;
+            break;
+        case MPU9250_GYRO_FS_500:
+            gyro_sens = MPU9250_GYRO_FS_500_FACTOR;
+            break;
+        case MPU9250_GYRO_FS_1000:
+            gyro_sens = MPU9250_GYRO_FS_1000_FACTOR;
+            break;
+        case MPU9250_GYRO_FS_2000:
+            gyro_sens = MPU9250_GYRO_FS_2000_FACTOR;
+            break;
+    }
     I2Cdev::writeBits(devAddr, MPU9250_RA_GYRO_CONFIG,
         MPU9250_GCONFIG_FS_SEL_BIT, MPU9250_GCONFIG_FS_SEL_LENGTH, range);
 }
@@ -3184,7 +3198,17 @@ void MPU9250::setDMPConfig2(uint8_t config) {
     I2Cdev::writeByte(devAddr, MPU9250_RA_DMP_CFG_2, config);
 }
 
-// Note: User calibration isn't implemented using only factory offsets
+// Note: User calibration isn't implemented. Using only factory offsets
+// Units of rotation are in degrees/s
+float MPU9250::readGyroX() {
+    return (float)getRotationX() / gyro_sens;
+}
+float MPU9250::readGyroY() {
+    return (float)getRotationY() / gyro_sens;
+}
+float MPU9250::readGyroZ() {
+    return (float)getRotationZ() / gyro_sens;
+}
 float MPU9250::readAccelX() {
     return (float)getAccelerationX() / accel_sens;
 }
