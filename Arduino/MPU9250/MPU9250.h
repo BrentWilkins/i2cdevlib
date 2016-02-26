@@ -219,6 +219,11 @@ THE SOFTWARE.
 #define MPU9250_GYRO_FS_1000        0x02
 #define MPU9250_GYRO_FS_2000        0x03
 
+#define MPU9250_GYRO_FS_250_FACTOR   131  // LSB/(º/s)
+#define MPU9250_GYRO_FS_500_FACTOR  65.5  // LSB/(º/s)
+#define MPU9250_GYRO_FS_1000_FACTOR 32.8  // LSB/(º/s)
+#define MPU9250_GYRO_FS_2000_FACTOR 16.4  // LSB/(º/s)
+
 #define MPU9250_ACONFIG_XA_ST_BIT           7
 #define MPU9250_ACONFIG_YA_ST_BIT           6
 #define MPU9250_ACONFIG_ZA_ST_BIT           5
@@ -232,10 +237,10 @@ THE SOFTWARE.
 #define MPU9250_ACCEL_FS_8          0x02
 #define MPU9250_ACCEL_FS_16         0x03
 
-#define MPU9250_ACCEL_FS_2_FACTOR   16384
-#define MPU9250_ACCEL_FS_4_FACTOR    8192
-#define MPU9250_ACCEL_FS_8_FACTOR    4096
-#define MPU9250_ACCEL_FS_16_FACTOR   2048
+#define MPU9250_ACCEL_FS_2_FACTOR  16384 // LSB/g
+#define MPU9250_ACCEL_FS_4_FACTOR   8192 // LSB/g
+#define MPU9250_ACCEL_FS_8_FACTOR   4096 // LSB/g
+#define MPU9250_ACCEL_FS_16_FACTOR  2048 // LSB/g
 
 #define MPU9250_DHPF_RESET          0x00
 #define MPU9250_DHPF_5              0x01
@@ -809,6 +814,9 @@ class MPU9250 {
         void setDMPConfig2(uint8_t config);
 
         // Basic set of functions to implement the SparkFun IMU interface
+        float readGyroX();
+        float readGyroY();
+        float readGyroZ();
         float readAccelX();
         float readAccelY();
         float readAccelZ();
