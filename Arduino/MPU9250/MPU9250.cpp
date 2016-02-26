@@ -335,13 +335,13 @@ void MPU9250::setFullScaleAccelRange(uint8_t range) {
         case MPU9250_ACCEL_FS_2:
             accel_sens = MPU9250_ACCEL_FS_2_FACTOR;
             break;
-        case MPU9250_GYRO_FS_500:
+        case MPU9250_ACCEL_FS_4:
             accel_sens = MPU9250_ACCEL_FS_4_FACTOR;
             break;
-        case MPU9250_GYRO_FS_1000:
+        case MPU9250_ACCEL_FS_8:
             accel_sens = MPU9250_ACCEL_FS_8_FACTOR;
             break;
-        case MPU9250_GYRO_FS_2000:
+        case MPU9250_ACCEL_FS_16:
             accel_sens = MPU9250_ACCEL_FS_16_FACTOR;
             break;
     }
