@@ -335,13 +335,13 @@ void MPU9250::setFullScaleAccelRange(uint8_t range) {
         case MPU9250_ACCEL_FS_2:
             accel_sens = MPU9250_ACCEL_FS_2_FACTOR;
             break;
-        case MPU9250_GYRO_FS_500:
+        case MPU9250_ACCEL_FS_4:
             accel_sens = MPU9250_ACCEL_FS_4_FACTOR;
             break;
-        case MPU9250_GYRO_FS_1000:
+        case MPU9250_ACCEL_FS_8:
             accel_sens = MPU9250_ACCEL_FS_8_FACTOR;
             break;
-        case MPU9250_GYRO_FS_2000:
+        case MPU9250_ACCEL_FS_16:
             accel_sens = MPU9250_ACCEL_FS_16_FACTOR;
             break;
     }
@@ -3185,6 +3185,15 @@ void MPU9250::setDMPConfig2(uint8_t config) {
 }
 
 // Note: User calibration isn't implemented using only factory offsets
+float MPU9250::readGyroX() {
+    return 0.f;
+}
+float MPU9250::readGyroY() {
+    return 0.f;
+}
+float MPU9250::readGyroZ() {
+    return 0.f;
+}
 float MPU9250::readAccelX() {
     return (float)getAccelerationX() / accel_sens;
 }
